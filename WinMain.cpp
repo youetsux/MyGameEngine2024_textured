@@ -105,12 +105,14 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdLine, 
 		{
 			//カメラを更新
 			Camera::Update();
-
+			static float rot = 0;
 			//ゲームの処理
 			Direct3D::BeginDraw();
 			Transform trs;
 			//trs.scale_ = { 0.5,0.5,0.5 };
 			//trs.position_ = { 1.0, 0,0 };
+			trs.rotate_.y = rot;
+			rot += 0.01;
 			fbx.Draw(trs);
 
 			//描画処理

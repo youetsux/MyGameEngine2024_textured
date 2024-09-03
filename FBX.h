@@ -31,7 +31,7 @@ class FBX
 	{
 		XMVECTOR position;
 		XMVECTOR uv;
-		//XMVECTOR normal; //ノーマル追加（法線ベクトル）
+		XMVECTOR normal; //ノーマル追加（法線ベクトル）
 	};
 
 	ID3D11Buffer* pVertexBuffer_; //頂点バッファ用メモリ 

@@ -61,6 +61,6 @@ float4 PS(VS_OUT inData) : SV_Target
     float cos_alpha = inData.cos_alpha;
     float4 ambentSource = { 0.3, 0.3, 0.3, 0.0 };//ŠÂ‹«Œõ‚Ì‹­‚³
     
-    //return Id * Kd * cos_alpha + Id * Kd * ambentSource;
-    return g_texture.Sample(g_sampler, inData.uv);
+    return Id * Kd * cos_alpha + Id * Kd * ambentSource;
+    //return g_texture.Sample(g_sampler, inData.uv);
 }
