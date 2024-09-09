@@ -65,7 +65,7 @@ void FBX::InitVertex(fbxsdk::FbxMesh* mesh)
 	//VERTEX* vertices = new VERTEX[vertexCount_];
 	std::vector<VERTEX> vertices(vertexCount_);
 	//全ポリゴン
-	for (DWORD poly = 0; poly < polygonCount_; poly++)
+	for (DWORD poly = 0; poly < (DWORD)polygonCount_; poly++)
 	{
 		//3頂点分
 		for (int vertex = 0; vertex < 3; vertex++)
@@ -122,7 +122,7 @@ void FBX::InitIndex(fbxsdk::FbxMesh* mesh)
 		int count = 0;
 		//全ポリゴン
 		//index.clear();
-		for (DWORD poly = 0; poly < polygonCount_; poly++)
+		for (DWORD poly = 0; poly < (DWORD)polygonCount_; poly++)
 		{
 			FbxLayerElementMaterial* mtl = mesh->GetLayer(0)->GetMaterials();
 			int mtlId = mtl->GetIndexArray().GetAt(poly);
@@ -217,13 +217,13 @@ void FBX::InitMaterial(fbxsdk::FbxNode* pNode)
 		{
 			//this part are witten after
 			pMaterialList_[i].pTexture = nullptr;
+			//マテリアルの色 　Lambert：拡散反射と、アンビエントのみのシェーディングモデル
+			FbxSurfaceLambert* pMaterial = (FbxSurfaceLambert*)pNode->GetMaterial(i);
+			FbxDouble3  diffuse = pMaterial->Diffuse;
+			pMaterialList_[i].diffuse = XMFLOAT4((float)diffuse[0], (float)diffuse[1], (float)diffuse[2], 1.0f);
 		}
-
-
 	}
 }
-
-
 
 void FBX::Draw(Transform& transform)
 {
@@ -234,8 +234,15 @@ void FBX::Draw(Transform& transform)
 	CONSTANT_BUFFER cb;
 	cb.matWVP = XMMatrixTranspose(transform.GetWorldMatrix() * Camera::GetViewMatrix() * Camera::GetProjectionMatrix());
 	cb.matNormal = XMMatrixTranspose(transform.GetNormalMatrix());
+
 	// インデックスバッファーをセット
 	for (int i = 0; i < materialCount_; i++) {
+		cb.diffuseColor = pMaterialList_[i].diffuse;
+		if (pMaterialList_[i].pTexture == nullptr)
+			cb.isTextured = false;
+		else
+			cb.isTextured = true;
+
 		D3D11_MAPPED_SUBRESOURCE pdata;
 		Direct3D::pContext->Map(pConstantBuffer_, 0, D3D11_MAP_WRITE_DISCARD, 0, &pdata);	// GPUからのデータアクセスを止める
 		memcpy_s(pdata.pData, pdata.RowPitch, (void*)(&cb), sizeof(cb));	// データを値を送る

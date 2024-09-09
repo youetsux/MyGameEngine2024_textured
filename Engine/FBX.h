@@ -18,12 +18,15 @@ class FBX
 	struct MATERIAL
 	{
 		Texture* pTexture;
+		XMFLOAT4 diffuse;
 	};
 
 	struct CONSTANT_BUFFER
 	{
 		XMMATRIX	matWVP; //ワールドビュープロジェクション
 		XMMATRIX	matNormal;   //法線ベクトルの変換用
+		XMFLOAT4	diffuseColor;
+		int		isTextured;
 	};
 
 	//頂点情報

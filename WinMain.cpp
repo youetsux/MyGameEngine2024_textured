@@ -1,22 +1,16 @@
 //インクルード
 #include <Windows.h>
-#include "Direct3D.h"
+#include "Engine/Direct3D.h"
+#include "Engine/Camera.h"
 
-//#include "Quad.h"
-#include "Camera.h"
-//
-//#include "Dice.h"
-//#include "Sprite.h"
-#include "Transform.h"
-#include "FBX.h"
 
 //リンカ
 #pragma comment(lib, "d3d11.lib")
 
 
-	//定数宣言
-	const wchar_t* WIN_CLASS_NAME = L"SampleGame";  //ウィンドウクラス名
-	const wchar_t* APP_NAME = L"サンプルゲーム"; //アプリケーション名
+//定数宣言
+const wchar_t* WIN_CLASS_NAME = L"SampleGame";  //ウィンドウクラス名
+const wchar_t* APP_NAME = L"サンプルゲーム"; //アプリケーション名
 
 
 //プロトタイプ宣言
@@ -73,20 +67,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdLine, 
 		return 0;
 	}
 
-	
-	//Camera::Initialize({5,10,-10}, {0,0,0});
 	Camera::Initialize();
-
-
-	FBX fbx;
-	fbx.Load("Assets\\Oden.fbx");
-
-
-	if (FAILED(hr))
-	{
-		MessageBox(NULL, L"初期化に失敗", NULL, MB_OK);
-		return 0;
-	}
 
 	//メッセージループ（何か起きるのを待つ）
 	MSG msg;
@@ -105,23 +86,17 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdLine, 
 		{
 			//カメラを更新
 			Camera::Update();
-			static float rot = 0;
-			//ゲームの処理
+			//描画の開始処理
 			Direct3D::BeginDraw();
-			Transform trs;
-			//trs.scale_ = { 0.5,0.5,0.5 };
-			//trs.position_ = { 1.0, 0,0 };
-			trs.rotate_.y = rot;
-			rot += 0.01;
-			fbx.Draw(trs);
 
-			//描画処理
+			//ここにゲームの内容を書いていく
+
+			//描画の終了処理
 			Direct3D::EndDraw();
 		}
 		
 	}
 
-	//SAFE_DELETE(q);
 	Direct3D::Release();
 
 	return 0;

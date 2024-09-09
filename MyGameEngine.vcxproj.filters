@@ -9,80 +9,71 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="ソース ファイル\SHADER">
-      <UniqueIdentifier>{cef85799-ec23-4783-94d6-57bb45b17e29}</UniqueIdentifier>
+    <Filter Include="ソース ファイル\Engine">
+      <UniqueIdentifier>{49c00961-2478-462e-8c77-9e195b66367d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\DirectXETC">
-      <UniqueIdentifier>{d25b14c0-4636-4fde-af47-3f9f0ed444ac}</UniqueIdentifier>
+    <Filter Include="ソース ファイル\Engine\SHADER">
+      <UniqueIdentifier>{310099ff-a2e0-47ed-8723-6e1a9660319e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\OBJECTS">
-      <UniqueIdentifier>{cf36146b-8ac4-4512-839d-6c9ea9bfa216}</UniqueIdentifier>
-    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>ソース ファイル\DirectXETC</Filter>
+    <ClCompile Include="Engine\Camera.cpp">
+      <Filter>ソース ファイル\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Direct3D.cpp">
-      <Filter>ソース ファイル\DirectXETC</Filter>
+    <ClCompile Include="Engine\Direct3D.cpp">
+      <Filter>ソース ファイル\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>ソース ファイル\DirectXETC</Filter>
+    <ClCompile Include="Engine\FBX.cpp">
+      <Filter>ソース ファイル\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>ソース ファイル\DirectXETC</Filter>
+    <ClCompile Include="Engine\Quad.cpp">
+      <Filter>ソース ファイル\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Dice.cpp">
-      <Filter>ソース ファイル\OBJECTS</Filter>
+    <ClCompile Include="Engine\Sprite.cpp">
+      <Filter>ソース ファイル\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Quad.cpp">
-      <Filter>ソース ファイル\OBJECTS</Filter>
+    <ClCompile Include="Engine\Texture.cpp">
+      <Filter>ソース ファイル\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Transform.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="FBX.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Engine\Transform.cpp">
+      <Filter>ソース ファイル\Engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Camera.h">
-      <Filter>ソース ファイル\DirectXETC</Filter>
+    <ClInclude Include="Engine\Camera.h">
+      <Filter>ソース ファイル\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Direct3D.h">
-      <Filter>ソース ファイル\DirectXETC</Filter>
+    <ClInclude Include="Engine\Direct3D.h">
+      <Filter>ソース ファイル\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>ソース ファイル\DirectXETC</Filter>
+    <ClInclude Include="Engine\FBX.h">
+      <Filter>ソース ファイル\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>ソース ファイル\DirectXETC</Filter>
+    <ClInclude Include="Engine\Quad.h">
+      <Filter>ソース ファイル\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Dice.h">
-      <Filter>ソース ファイル\OBJECTS</Filter>
+    <ClInclude Include="Engine\Sprite.h">
+      <Filter>ソース ファイル\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Quad.h">
-      <Filter>ソース ファイル\OBJECTS</Filter>
+    <ClInclude Include="Engine\Texture.h">
+      <Filter>ソース ファイル\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="FBX.h">
-      <Filter>ソース ファイル</Filter>
+    <ClInclude Include="Engine\Transform.h">
+      <Filter>ソース ファイル\Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Simple2D.hlsl">
-      <Filter>ソース ファイル\SHADER</Filter>
+    <FxCompile Include="Engine\Simple2D.hlsl">
+      <Filter>ソース ファイル\Engine\SHADER</Filter>
     </FxCompile>
-    <FxCompile Include="simple3D.hlsl">
-      <Filter>ソース ファイル\SHADER</Filter>
+    <FxCompile Include="Engine\simple3D.hlsl">
+      <Filter>ソース ファイル\Engine\SHADER</Filter>
     </FxCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
 </Project>
